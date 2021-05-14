@@ -6,9 +6,8 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "car_body_type")
-public class
-CarBodyType {
+@Table(name = "ads_type")
+public class AdsType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -17,18 +16,18 @@ CarBodyType {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "carBodyType")
-    private List<Car> cars = new ArrayList<>();
+    @OneToMany(mappedBy = "adsType")
+    private List<Ads> ads = new ArrayList<>();
 
-    public void addCar(Car car) {
-        this.cars.add(car);
-        car.setCarBodyType(this);
+    public static AdsType of(String name) {
+        AdsType announcementType = new AdsType();
+        announcementType.setName(name);
+        return announcementType;
     }
 
-    public static CarBodyType of(String name) {
-        CarBodyType carBodyType = new CarBodyType();
-        carBodyType.setName(name);
-        return carBodyType;
+    public void addAds(Ads ad) {
+        this.ads.add(ad);
+        ad.setAdsType(this);
     }
 
     public int getId() {
@@ -47,12 +46,12 @@ CarBodyType {
         this.name = name;
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public List<Ads> getAds() {
+        return ads;
     }
 
-    public void setCars(List<Car> cars) {
-        this.cars = cars;
+    public void setAds(List<Ads> ads) {
+        this.ads = ads;
     }
 
     @Override
@@ -63,7 +62,7 @@ CarBodyType {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CarBodyType that = (CarBodyType) o;
+        AdsType that = (AdsType) o;
         return id == that.id;
     }
 

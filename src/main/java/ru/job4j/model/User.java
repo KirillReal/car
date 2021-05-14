@@ -26,7 +26,7 @@ public class User {
     private String phone;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Car> cars = new ArrayList<>();
+    private List<Ads> ads = new ArrayList<>();
 
     public static User of(String name, String login, String password, String phone) {
         User user = new User();
@@ -37,9 +37,13 @@ public class User {
         return user;
     }
 
-    public void addCar(Car car) {
-        this.cars.add(car);
-        car.setUser(this);
+    public void addAds(Ads ad) {
+        this.ads.add(ad);
+        ad.setUser(this);
+    }
+
+    public void clearPassword() {
+        this.setPassword("");
     }
 
     public int getId() {
@@ -82,12 +86,12 @@ public class User {
         this.phone = phone;
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public List<Ads> getAds() {
+        return ads;
     }
 
-    public void setCars(List<Car> cars) {
-        this.cars = cars;
+    public void setAds(List<Ads> ads) {
+        this.ads = ads;
     }
 
     @Override

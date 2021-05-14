@@ -6,7 +6,10 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import ru.job4j.model.Ads;
 import ru.job4j.model.Car;
+import ru.job4j.model.CarBodyType;
+import ru.job4j.model.CarModel;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -43,7 +46,7 @@ public class AdRepository implements AutoCloseable {
         }
     }
 
-    public List<Car> getLastDayAds() {
+    public List<Ads> getLastDayAds() {
        return tx(session -> {
             Date date = new Date();
             Calendar cal = new GregorianCalendar();
@@ -54,21 +57,23 @@ public class AdRepository implements AutoCloseable {
             cal.set(Calendar.MILLISECOND, 0);
             date = cal.getTime();
 
-           return session.createQuery("from Car car "
-                    + "where car.created > :date", Car.class)
+           return session.createQuery("from Ads ad "
+                    + "where ad.created > :date", Ads.class)
                     .setParameter("date", date).list();
         });
     }
 
-    public List<Car> getAdsWithPhoto() {
-        return tx(session -> session.createQuery("select distinct car "
-        + "from Car car " + "where car.carPhotos.size > 0 ", Car.class)
-                .list());
+    public List<Ads> getAdsWithPhoto() {
+        return this.tx(session -> session.createQuery(
+                "select distinct ad from Ads ad "
+                        + "where ad.car.carPhotos.size > 0", Ads.class)
+                .list()
+        );
     }
 
-    public List<Car> getAdsByModel(int carModelId) {
-        return tx(session -> session.createQuery("select distinct car "
-            + "from Car car " + "where car.carModel.id = :modelId", Car.class)
+    public List<Ads> getAdsByModel(int carModelId) {
+        return tx(session -> session.createQuery("select distinct ads "
+            + "from Ads ads " + "where ads.car.carModel.id = :modelId", Ads.class)
         .setParameter("modelId", carModelId).list());
     }
 

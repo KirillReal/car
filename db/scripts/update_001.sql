@@ -52,3 +52,4 @@ CREATE TABLE car_photo(
                           id SERIAL PRIMARY KEY,
                           car_id INT NOT NULL REFERENCES car(id)
 );
+

@@ -17,7 +17,7 @@ public class City {
     private String name;
 
     @OneToMany(mappedBy = "city")
-    private List<Car> cars = new ArrayList<>();
+    private List<Ads> ads = new ArrayList<>();
 
     public static City of(String name) {
         City city = new City();
@@ -25,10 +25,11 @@ public class City {
         return city;
     }
 
-    public void addCar(Car car) {
-        this.cars.add(car);
-        car.setCity(this);
+    public void addAds(Ads ad) {
+        this.ads.add(ad);
+        ad.setCity(this);
     }
+
 
     public int getId() {
         return id;
@@ -46,8 +47,12 @@ public class City {
         this.name = name;
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public List<Ads> getAds() {
+        return ads;
+    }
+
+    public void setAds(List<Ads> ads) {
+        this.ads = ads;
     }
 
     @Override

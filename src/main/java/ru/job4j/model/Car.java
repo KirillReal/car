@@ -11,16 +11,6 @@ public class Car {
     @Column(name = "id")
     private int id;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created")
-    private Date created = new Date(System.currentTimeMillis());
-
-    @Column(name = "price")
-    private int price;
-
-    @Column(name = "is_sold")
-    private boolean isSold;
-
     @Column(name = "is_new")
     private boolean isNew;
 
@@ -33,51 +23,35 @@ public class Car {
     @Column(name = "description")
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @ManyToOne
-    @JoinColumn(name = "city_id")
-    private City city;
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "car_model_id")
     private CarModel carModel;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "car_body_type_id")
     private CarBodyType carBodyType;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "car_engine_type_id")
     private CarEngineType carEngineType;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "car_transmission_box_type_id")
     private CarTransmissionBoxType carTransmissionBoxType;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "car")
     private List<CarPhoto> carPhotos = new ArrayList<>();
 
-    public static Car of(
-            int price, boolean isSold, boolean isNew, int mileage, boolean isBroken,
-            String description, User user, City city, CarModel carModel, CarBodyType carBodyType,
-            CarEngineType carEngineType, CarTransmissionBoxType carTransmissionBoxType
-    ) {
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ads_id")
+    private Ads ads;
+
+    public static Car of(boolean isNew, int mileage, boolean isBroken, String description) {
         Car car = new Car();
-        car.setPrice(price);
-        car.setSold(isSold);
         car.setNew(isNew);
         car.setMileage(mileage);
         car.setBroken(isBroken);
         car.setDescription(description);
-        car.setUser(user);
-        car.setCity(city);
-        car.setCarModel(carModel);
-        car.setCarBodyType(carBodyType);
-        car.setCarEngineType(carEngineType);
-        car.setCarTransmissionBoxType(carTransmissionBoxType);
         return car;
     }
 
@@ -92,30 +66,6 @@ public class Car {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Date getCreated() {
-        return created;
-    }
-
-    public void setCreated(Date created) {
-        this.created = created;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public boolean isSold() {
-        return isSold;
-    }
-
-    public void setSold(boolean sold) {
-        isSold = sold;
     }
 
     public boolean isNew() {
@@ -148,22 +98,6 @@ public class Car {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public City getCity() {
-        return city;
-    }
-
-    public void setCity(City city) {
-        this.city = city;
     }
 
     public CarModel getCarModel() {
@@ -204,6 +138,14 @@ public class Car {
 
     public void setCarPhotos(List<CarPhoto> carPhotos) {
         this.carPhotos = carPhotos;
+    }
+
+    public Ads getAds() {
+        return ads;
+    }
+
+    public void setAds(Ads ads) {
+        this.ads = ads;
     }
 
     @Override
