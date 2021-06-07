@@ -288,15 +288,15 @@
     </details>
 </div>
 
-<h3><a name="api_announcement">announcement</a>&nbsp;&nbsp;<a href="#menu">&#9650;</a></h3>
+<h3><a name="api_ads">ads</a>&nbsp;&nbsp;<a href="#menu">&#9650;</a></h3>
 <p>
     Операции с объявлениями<br>
-    <code>ru.job4j.servlet.AnnouncementServlet</code>
+    <code>ru.job4j.servlet.AdsServlet</code>
 </p>
 <div>
     <details>
         <summary>
-            <strong><code>&nbsp;&nbsp;POST&nbsp;&nbsp;</code></strong> &nbsp;&nbsp; <strong>/announcement?action=get-form-fields</strong> &nbsp;&nbsp; получить данные для полей формы добавления нового объявления
+            <strong><code>&nbsp;&nbsp;POST&nbsp;&nbsp;</code></strong> &nbsp;&nbsp; <strong>/adst?action=get-form-fields</strong> &nbsp;&nbsp; получить данные для полей формы добавления нового объявления
         </summary>
         <p></p>
         <table>
