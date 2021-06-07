@@ -84,7 +84,7 @@
 |-----resources
 |-----webapp
 |-------WEB-INF
-|-------announcement
+|-------ads
 |-------css
 |-------img
 |-------js
