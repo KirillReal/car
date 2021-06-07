@@ -20,7 +20,7 @@
         <a href="#api">API</a>
         <ul>
             <li><a href="#api_user">user</a></li>
-            <li><a href="#api_announcement">announcement</a></li>
+            <li><a href="#api_ads">ads</a></li>
         </ul>
     </li>
     <li>
@@ -30,7 +30,7 @@
             <li><a href="#car_info">Карточка товара</a></li>
             <li><a href="#profile">Профиль пользователя</a></li>
             <li>
-                <a href="#announcement">Размещение объявления</a>
+                <a href="#ads">Размещение объявления</a>
                 <ul>
                     <li><a href="#ads_form">Форма</a></li>
                     <li><a href="#ads_photo">Фотография</a></li>
@@ -296,7 +296,7 @@
 <div>
     <details>
         <summary>
-            <strong><code>&nbsp;&nbsp;POST&nbsp;&nbsp;</code></strong> &nbsp;&nbsp; <strong>/adst?action=get-form-fields</strong> &nbsp;&nbsp; получить данные для полей формы добавления нового объявления
+            <strong><code>&nbsp;&nbsp;POST&nbsp;&nbsp;</code></strong> &nbsp;&nbsp; <strong>/ads?action=get-form-fields</strong> &nbsp;&nbsp; получить данные для полей формы добавления нового объявления
         </summary>
         <p></p>
         <table>
@@ -367,7 +367,7 @@
     </details>
     <details>
         <summary>
-            <strong><code>&nbsp;&nbsp;POST&nbsp;&nbsp;</code></strong> &nbsp;&nbsp; <strong>/announcement?action=save</strong> &nbsp;&nbsp; сохранение нового объявления
+            <strong><code>&nbsp;&nbsp;POST&nbsp;&nbsp;</code></strong> &nbsp;&nbsp; <strong>/ads?action=save</strong> &nbsp;&nbsp; сохранение нового объявления
         </summary>
         <p></p>
         <table>
@@ -429,7 +429,7 @@
     </details>
     <details>
         <summary>
-            <strong><code>&nbsp;&nbsp;POST&nbsp;&nbsp;</code></strong> &nbsp;&nbsp; <strong>/announcement?action=update</strong> &nbsp;&nbsp; обновление объявления
+            <strong><code>&nbsp;&nbsp;POST&nbsp;&nbsp;</code></strong> &nbsp;&nbsp; <strong>/ads?action=update</strong> &nbsp;&nbsp; обновление объявления
         </summary>
         <p></p>
         <table>
@@ -449,7 +449,7 @@
 ```json
 {
     "isSold": true,
-    "announcementId": 7,
+    "adsId": 7,
 }
 ```
 </td>
@@ -478,7 +478,7 @@
     </details>
     <details>
         <summary>
-            <strong><code>&nbsp;&nbsp;POST&nbsp;&nbsp;</code></strong> &nbsp;&nbsp; <strong>/announcement?action=get-user-announcement&id={userId}</strong> &nbsp;&nbsp; получить объявления пользователя
+            <strong><code>&nbsp;&nbsp;POST&nbsp;&nbsp;</code></strong> &nbsp;&nbsp; <strong>/ads?action=get-user-announcement&id={userId}</strong> &nbsp;&nbsp; получить объявления пользователя
         </summary>
         <p></p>
         <table>
@@ -516,7 +516,7 @@
     </details>
     <details>
         <summary>
-            <strong><code>&nbsp;&nbsp;POST&nbsp;&nbsp;</code></strong> &nbsp;&nbsp; <strong>/announcement?action=get-all-announcement</strong> &nbsp;&nbsp; получить все активные объявления (статус не продано)
+            <strong><code>&nbsp;&nbsp;POST&nbsp;&nbsp;</code></strong> &nbsp;&nbsp; <strong>/ads?action=get-all-ads</strong> &nbsp;&nbsp; получить все активные объявления (статус не продано)
         </summary>
         <p></p>
         <table>
@@ -586,7 +586,7 @@
 
 ![ScreenShot](Screen/Form.png)
 
-<h4><a name="announcement_photo">Фотография</a>&nbsp;&nbsp;<a href="#menu">&#9650;</a></h4>
+<h4><a name="ads_photo">Фотография</a>&nbsp;&nbsp;<a href="#menu">&#9650;</a></h4>
 <p>
     Следующим шагом пользователю будет предложено выбрать фотографию машины.
 </p>
